@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css" href="index.css">  
+
+    <script src="index.js"></script>
+    <title>Primer Parcial</title>
+</head>
+<body>
+    <section>
+        <div id="div-chechks">
+            <label>id <input id="ch_id" type="checkbox" value="id" name="filtros" ></label>
+            <label>Modelo <input id="ch_mod" type="checkbox" value="Modelo"name="filtros" ></label>
+            <label>Año de fabrica<input id="ch_año_fab" type="checkbox" value="Año"name="filtros" ></label>
+            <label>velocidad maxima<input id="ch_vel_max" type="checkbox" value="velocidad"name="filtros" ></label>
+            <label>Altura maxima<input id="ch_alt_max" type="checkbox" value="altura"name="filtros" ></label>
+            <label>Autonomia<input id="ch_autonomia" type="checkbox" value="autonomia"name="filtros" ></label>
+            <label>Cantidad de puertas<input id="ch_cant_pue" type="checkbox" value="puertas"name="filtros" ></label>
+            <label>Cantidad de ruedas<input id="ch_cant_rue" type="checkbox" value="ruedas"name="filtros" ></label>
+        </div>
+        <div>
+            <table id="tabla">
+                
+                
+                <thead id="thead">
+                    <tr id="cabezadeTabla">
+                        <th>Modelo</th>
+                        <th>Velocidad maxima</th>
+                        <th>Año de fabrica</th>
+                        <th>Id  </th>
+                        <th>Altura maxima</th>
+                        <th>Autonomia</th>
+                        <th>Cantidad de puertas</th>
+                        <th>Cantidad de ruedas</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoDeTabla">
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section>
+        <div>
+            <form id="form-ABM" class="form-ABM">
+                <label id="empleado-id" class="Cliente-id" >Aereo <input value="Aereo" class="Cliente-id" type="radio" name="coe"> </label>
+                <label id="empleado-id" class="empleado-id">Terrestre<input value="Terrestre" class="empleado-id" type="radio" name="coe"></label>
+                <label name="Modelo">Modelo: 
+                <input id="nombre-id" required name="Modelo" type="text" placeholder="Modelo"></label>
+                <label>Año de fabrica: <input required id="apellido-id" name ="Año_de_fabrica"type="text" placeholder="Año de fabrica"></label>
+                <label>Velocidad maxima:<input required id="edad-id" name="Velocidad_maxima"type="text" placeholder="Velocidad maxima"></label>
+                <label>id<input id="id-id"  required type="text" name ="id"placeholder="Id"></label>
+                <label>Altura maxima:<input required id="compras-id" type="text" name ="Altura_maxima"placeholder="Altura maxima"></label>
+                <label>Autonomia:<input required id="telefono-id" type="text" name="Autonomia"placeholder="Autonomia"></label>
+                <label>Cantidad de ruedas:<input required id="ventas-id" type="text" name="Cantidad_de_ruedas"placeholder="Cantidad de ruedas"></label>
+                <label>Cantidad de puertas:<input  id="sueldo-id" type="text" name="Cantidad_de_puertas"placeholder="Cantidad de puertas" required></label>
+        </div>
+    </section>
+</body>
+</html>
