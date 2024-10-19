@@ -45,29 +45,25 @@ class Terrestre extends Vehiculo
         this.cantRue =a_cantRue;
         this.cantPue=a_cantPue;
     }
-}//Modelos
-//Recibo el string
-// ' [{"id":1, "nombre":"Marcelo", "apellido":"Luque", "edad":45, "ventas":15000, "sueldo":2000},{"id":2,"nombre":"Ramiro", "apellido":"Escobar", "edad":35, "ventas": 6000, "sueldo": 1000},{"id":3, "nombre":"Facundo","apellido":"Cairo", "edad":30, "ventas":500, "sueldo":15000},{"id":4, "nombre":"Fernando", "apellido":"Nieto","edad":18, "compras":8000, "telefono":"152111131"},{"id":5, "nombre":"Manuel", "apellido":"Loza", "edad":20,"compras":50000, "telefono":"42040077"},{"id":666, "nombre":"Nicolas", "apellido":"Serrano", "edad":23,"compras":7000, "telefono":"1813181563"}]';
+}
 let miCadena='[{"id":14, "modelo":"Ferrari F100", "anoFab":1998, "velMax":400, "cantPue":2, "cantRue":4},{"id":51, "modelo":"DodgeViper", "anoFab":1991, "velMax":266, "cantPue":2, "cantRue":4},{"id":67, "modelo":"Boeing CH-47 Chinook","anoFab":1962, "velMax":302, "altMax":6, "autonomia":1200},{"id":666, "modelo":"Aprilia RSV 1000 R","anoFab":2004, "velMax":280, "cantPue":0, "cantRue":2},{"id":872, "modelo":"Boeing 747-400", "anoFab":1989,"velMax":988, "altMax":13, "autonomia":13450},{"id":742, "modelo":"Cessna CH-1 SkyhookR", "anoFab":1953,"velMax":174, "altMax":3, "autonomia":870}]'
 
 
-//lo parseo a jason
+
 let ar=JSON.parse(miCadena);
-// Mapeo el json a objetos segun corresponda
-array =ar.map( vehiculos => //cada item del json es llamado People
-    {//Discimino los items por la propiedad ventas para diferenciar data de cliente o empleado e instanciar asi el objeto que
-    //corresponda
+
+array =ar.map( vehiculos => 
+    {
     if (vehiculos.autonomia ===undefined)
-    {//instancio el objeto
+    {
         return new Terrestre(vehiculos.modelo,vehiculos.anoFab,vehiculos.velMax,vehiculos.id,vehiculos.cantPue,vehiculos.cantRue);
     }
     else
-    {//instancio el objeto
+    {
         return new Aereo(vehiculos.modelo,vehiculos.anoFab,vehiculos.velMax,vehiculos.id,vehiculos.autonomia,vehiculos.altMax);
     }
 }
-);//mi variable array tiene todos los objetos instanciados segun corresponda
-//funcionamiento en gral
+);
 window.addEventListener("load",()=>
 {
     array.forEach(item => cargarAtabla(item));
@@ -89,7 +85,14 @@ function ALTA()
 {
     document.getElementById("tabla").style.display="none";
     document.getElementById("div-chechks").style.display="none";
-
+    if(document.getElementById("empleado-id1").style.display=="none")
+    {
+        document.getElementById("empleado-id").style.display="inline-block";
+        document.getElementById("empleado-id1").style.display="inline-block";
+        document.getElementsByName("coe").forEach((rdb)=>{
+            rdb.style.display="inline-block";
+        });
+    }
     rdb =document.querySelectorAll('input[name="coe"]'); 
     rdb.forEach(radioBtn =>{
         radioBtn.addEventListener('change', (event) =>{
@@ -228,6 +231,12 @@ function Modificar(tr)
 {
     form =document.getElementById("form-ABM"); 
     form.style.display="flex";
+    document.getElementById("empleado-id").style.display="none";
+    document.getElementById("empleado-id1").style.display="none";
+
+    document.getElementsByName("coe").forEach((rdb)=>{
+        rdb.style.display="none";
+    });
     bandera=false;
     if(tr.children[5].textContent!="-----")
     {
@@ -297,9 +306,9 @@ function auxiliar(box)
                 })
             }
             else
-            { thead.children[0].children[0].style.display="flex";
+            { thead.children[0].children[0].style.display="table-cell";
                 Array.from(tbody.children).forEach((tr)=>{
-                    tr.children[0].style.display="flex";
+                    tr.children[0].style.display="table-cell";
                 })}
             break;
         case "autonomia":
@@ -309,24 +318,22 @@ function auxiliar(box)
                     tr.children[5].style.display="none";
                 })}
             else
-            {thead.children[0].children[5].style.display="flex";
+            {thead.children[0].children[5].style.display="table-cell";
                 Array.from(tbody.children).forEach((tr)=>{
-                    tr.children[5].style.display="flex";
+                    tr.children[5].style.display="table-cell";
                 })}
-            
             break;
         case "Año":
             if(box.checked)
                 {thead.children[0].children[2].style.display="none";
                     Array.from(tbody.children).forEach((tr)=>{
-                        tr.children[0].style.display="none";
+                        tr.children[2].style.display="none";
                     })}
                 else
-                {thead.children[0].children[2].style.display="flex";
+                {thead.children[0].children[2].style.display="table-cell";
                     Array.from(tbody.children).forEach((tr)=>{
-                        tr.children[2].style.display="flex";
+                        tr.children[2].style.display="table-cell";
                     })}
-            
             break;
         case "velocidad":
             if(box.checked)
@@ -335,11 +342,10 @@ function auxiliar(box)
                         tr.children[1].style.display="none";
                     })}
                 else
-                {thead.children[0].children[1].style.display="flex";
+                {thead.children[0].children[1].style.display="table-cell";
                     Array.from(tbody.children).forEach((tr)=>{
-                        tr.children[1].style.display="flex";
+                        tr.children[1].style.display="table-cell";
                     })}
-            
             break;
         case "altura":
             if(box.checked)
@@ -348,11 +354,10 @@ function auxiliar(box)
                         tr.children[4].style.display="none";
                     })}
                 else
-                {thead.children[0].children[4].style.display="flex";
+                {thead.children[0].children[4].style.display="table-cell";
                     Array.from(tbody.children).forEach((tr)=>{
-                        tr.children[4].style.display="flex";
+                        tr.children[4].style.display="table-cell";
                     })}
-           
             break;
         case "ruedas":
             if(box.checked)
@@ -361,11 +366,10 @@ function auxiliar(box)
                         tr.children[7].style.display="none";
                     })}
                 else
-                {thead.children[0].children[7].style.display="flex";
+                {thead.children[0].children[7].style.display="table-cell";
                     Array.from(tbody.children).forEach((tr)=>{
-                        tr.children[7].style.display="flex";
+                        tr.children[7].style.display="table-cell";
                     })}
-           
             break;
         case "puertas": 
         if(box.checked)
@@ -374,11 +378,10 @@ function auxiliar(box)
                     tr.children[6].style.display="none";
                 })}
             else
-            {thead.children[0].children[6].style.display="flex";
+            {thead.children[0].children[6].style.display="table-cell";
                 Array.from(tbody.children).forEach((tr)=>{
-                    tr.children[6].style.display="flex";
+                    tr.children[6].style.display="table-cell";
                 })}
-        
             break;
         case "id":
             if(box.checked){ 
@@ -387,11 +390,10 @@ function auxiliar(box)
                 tr.children[3].style.display="none";
             })}
                 else
-                {thead.children[0].children[3].style.display="flex";
+                {thead.children[0].children[3].style.display="table-cell";
                     Array.from(tbody.children).forEach((tr)=>{
-                        tr.children[3].style.display="flex";
+                        tr.children[3].style.display="table-cell";
                     })}
-            
             break;
     }
 }
