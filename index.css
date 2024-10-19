@@ -1,4 +1,7 @@
-
+*
+{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 section
 {
     display: flex;
@@ -19,11 +22,9 @@ div
     display: none;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     margin: 10px;
     align-items: flex-end;
     border: 1px solid rgb(0, 0, 0);
-    /* //color para el formulario */
     color: rgb(150, 84, 84);
     background-color: rgb(212, 199, 112); 
 }
@@ -43,16 +44,14 @@ table{
     border: 1px solid black;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: black;
-    
 }
 tbody
 {
-    background-color: chartreuse;
-
+    background-color: rgb(226, 200, 134);
 }
 thead
 {
-    background-color: rgb(88, 218, 173);
+    background-color: rgb(255, 193, 86);
 }
 #div-chechks
 {
@@ -73,3 +72,20 @@ button:hover {background: #0b7dda; color: rgb(255, 255, 255);}
 
 #boton-modificar{background-color: rgb(255, 255, 255); border: 2px solid #a913c4;}
 #boton-modificar:hover {background:  #a913c4;; color: rgb(255, 255, 255);}
+
+
+
+label{
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+body{
+    background-image: url("wood.jpg");
+    opacity: 0.8;
+    background-size: cover;
+}
+input checkbox
+{
+    
+}
